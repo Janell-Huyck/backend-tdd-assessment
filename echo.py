@@ -15,7 +15,7 @@ if sys.version_info[0] >= 3:
     raise Exception("This program requires python2 interpreter")
 
 
-def parse_args(sys_args):
+def create_parser(sys_args):
     """Creates and returns an argparse cmd line option parser"""
 
     parser = argparse.ArgumentParser(add_help=True,
@@ -29,33 +29,34 @@ def parse_args(sys_args):
     parser.add_argument('-t', '--title', action="store_true",
                         help='convert text to titlecase')
 
-    if len(sys.argv) == 1:
+    return parser
+
+
+def main(sys_args):
+    """Implementation of echo"""
+    parser = create_parser(sys_args)
+
+    if len(sys.args) == 1:
         print("\nCaught with too few arguments. How embarrassing...\n")
         parser.print_help(sys.stderr)
         sys.exit(1)
 
-    parsed_args = parser.parse_args(sys_args)
+    main_args = parser.parse_args(sys_args)
 
-    return parsed_args
-
-
-def main():
-    """Implementation of echo"""
-    args = parse_args(sys.argv[1:])
-    result_text = args.text
+    result_text = main_args.text
 
     # manipulate the result text based off the passed
     # arguments.  Intentionally overwrite if mulitple
     # arguments are passed.
-    if args.upper:
-        result_text = args.text.upper()
-    if args.lower:
-        result_text = args.text.lower()
-    if args.title:
-        result_text = args.text.title()
+    if main_args.upper:
+        result_text = main_args.text.upper()
+    if main_args.lower:
+        result_text = main_args.text.lower()
+    if main_args.title:
+        result_text = main_args.text.title()
 
     print(result_text)
 
 
 if __name__ == '__main__':
-    main()
+    main(sys.argv[1:])
