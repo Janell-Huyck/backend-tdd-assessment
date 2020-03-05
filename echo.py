@@ -3,9 +3,6 @@
 """An enhanced version of the 'echo' cmd line utility"""
 
 __author__ = """Janell.Huyck with help from madarp, knmarvel, and:
-                https://stackoverflow.com/questions/
-                    18160078/how-do-you-write-tests-for-the-argparse-
-                    portion-of-a-python-module/55234595#55234595
                 https://stackoverflow.com/questions/4042452/display-
                     help-message-with-python-argparse-when-script-is-
                     called-without-any-argu"""
