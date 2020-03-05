@@ -48,7 +48,7 @@ class TestEcho(unittest.TestCase):
     def test_all_case_manipulation(self):
 
         process = subprocess.Popen(
-            ["python", "./echo.py", "hEllo", "-ulf"],
+            ["python", "./echo.py", "hEllo", "-ult"],
             stdout=subprocess.PIPE)
         stdout, _ = process.communicate()
 
