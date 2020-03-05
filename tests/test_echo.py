@@ -9,6 +9,7 @@ import subprocess
 
 
 class TestEcho(unittest.TestCase):
+
     def test_no_manipulation(self):
 
         process = subprocess.Popen(
