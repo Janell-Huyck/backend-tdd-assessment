@@ -45,14 +45,19 @@ def parse_args(sys_args):
 def main():
     """Implementation of echo"""
     args = parse_args(sys.argv[1:])
+    result_text = args.text
+
+    # manipulate the result text based off the passed
+    # arguments.  Intentionally overwrite if mulitple
+    # arguments are passed.
     if args.upper:
-        print(args.text.upper())
+        result_text = args.text.upper()
     if args.lower:
-        print(args.text.lower())
+        result_text = args.text.lower()
     if args.title:
-        print(args.text.title())
-    if not args.upper and not args.lower and not args.title:
-        print(args.text)
+        result_text = args.text.title()
+
+    print(result_text)
 
 
 if __name__ == '__main__':
