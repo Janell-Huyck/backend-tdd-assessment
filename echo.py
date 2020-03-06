@@ -36,12 +36,18 @@ def main(sys_args):
     """Implementation of echo"""
     parser = create_parser(sys_args)
 
-    if len(sys_args) == 0:
-        print("\nCaught with too few arguments. How embarrassing...\n")
-        parser.print_help(sys.stderr)
-        sys.exit(1)
+    # if len(sys_args) == 0:
+    #     print("\nCaught with too few arguments. How embarrassing...\n")
+    #     parser.print_help(sys.stderr)
+    #     sys.exit(1)
 
-    main_args = parser.parse_args(sys_args)
+    # if '-h' in sys_args or '--help' in sys_args:
+    #     print (help())
+    #     return parser.print_help(sys.stderr)
+
+    # main_args = parser.parse_args(sys_args)
+    main_args = parser.parse_args(
+        args=sys_args if len(sys_args) else ['--help'])
     result_text = main_args.text
 
     # manipulate the result text based off the passed
@@ -55,6 +61,7 @@ def main(sys_args):
         result_text = main_args.text.title()
 
     print(result_text)
+    return result_text
 
 
 if __name__ == '__main__':
